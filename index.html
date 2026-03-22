@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Game</title>
-
+    <title>Clicker Game - Timer Challenge</title>
     <style>
         body {
             text-align: center;
-            font-family: Arial;
+            font-family: Arial, sans-serif;
             background-color: #111;
             color: white;
         }
@@ -26,84 +25,53 @@
         button:hover {
             background-color: green;
         }
+
+        #timer {
+            font-size: 30px;
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
 
-    <h1>W speed ahh clicker game</h1>
+    <h1>⏱️ Timer Clicker Game</h1>
     <p>Score: <span id="score">0</span></p>
-
-    <button onclick="addScore()">Click Me!</button>
+    <p id="timer">Time: 30s</p>
+    <button id="clickButton">Click Me!</button>
+    <p id="message"></p>
 
     <script>
         let score = 0;
+        let timeLeft = 10; // seconds
+        let gameActive = true;
 
-        function addScore() {
+        const scoreEl = document.getElementById("score");
+        const timerEl = document.getElementById("timer");
+        const messageEl = document.getElementById("message");
+        const button = document.getElementById("clickButton");
+
+        // Countdown timer
+        const timer = setInterval(() => {
+            if (!gameActive) return;
+
+            timeLeft--;
+            timerEl.textContent = "Time: " + timeLeft + "s";
+
+            if (timeLeft <= 0) {
+                gameActive = false;
+                clearInterval(timer);
+                messageEl.textContent = "Time's up! Your final score: " + score;
+                button.disabled = true;
+            }
+        }, 1000);
+
+        // Click button increases score
+        button.addEventListener("click", () => {
+            if (!gameActive) return;
             score++;
-            document.getElementById("score").textContent = score;
-        }
+            scoreEl.textContent = score;
+        });
     </script>
 
 </body>
 </html>
-<script>
-    let score = 0;
-    let level = 1;
-
-    function addScore() {
-        score++;
-        
-        if (score % 10 === 0) {
-            level++;
-            alert("Level up! You're now level " + level);
-        }
-
-        document.getElementById("score").textContent = score;
-    }
-</script>
-🎨 Add game style text
-
-Change your title:
-
-<h1>🔥 Ultimate Clicker Game 🔥</h1>
-⚡ Add sound (optional but awesome)
-<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
-
-<script>
-    let score = 0;
-
-    function addScore() {
-        score++;
-        document.getElementById("score").textContent = score;
-
-        document.getElementById("clickSound").play();
-    }
-</script>
-<script>
-    let score = 0;
-    let level = 1;
-
-    function addScore() {
-        score++;
-        
-        if (score % 10 === 0) {
-            level++;
-            alert("Level up! You're now level " + level);
-        }
-
-        document.getElementById("score").textContent = score;
-    }
-</script>
-
-<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
-
-<script>
-    let score = 0;
-
-    function addScore() {
-        score++;
-        document.getElementById("score").textContent = score;
-
-        document.getElementById("clickSound").play();
-    }
-</script>
