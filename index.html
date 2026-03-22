@@ -46,3 +46,64 @@
 
 </body>
 </html>
+<script>
+    let score = 0;
+    let level = 1;
+
+    function addScore() {
+        score++;
+        
+        if (score % 10 === 0) {
+            level++;
+            alert("Level up! You're now level " + level);
+        }
+
+        document.getElementById("score").textContent = score;
+    }
+</script>
+🎨 Add game style text
+
+Change your title:
+
+<h1>🔥 Ultimate Clicker Game 🔥</h1>
+⚡ Add sound (optional but awesome)
+<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
+
+<script>
+    let score = 0;
+
+    function addScore() {
+        score++;
+        document.getElementById("score").textContent = score;
+
+        document.getElementById("clickSound").play();
+    }
+</script>
+<script>
+    let score = 0;
+    let level = 1;
+
+    function addScore() {
+        score++;
+        
+        if (score % 10 === 0) {
+            level++;
+            alert("Level up! You're now level " + level);
+        }
+
+        document.getElementById("score").textContent = score;
+    }
+</script>
+<h1>🔥 Ultimate Clicker Game 🔥</h1>
+<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
+
+<script>
+    let score = 0;
+
+    function addScore() {
+        score++;
+        document.getElementById("score").textContent = score;
+
+        document.getElementById("clickSound").play();
+    }
+</script>
